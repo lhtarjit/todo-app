@@ -69,7 +69,16 @@ const SingleTodo = ({ todo, todos, setTodos }: props) => {
         <span className="icon" onClick={() => handleDelete(todo.id)}>
           <AiFillDelete />
         </span>
-        <span className="icon" onClick={() => handleDone(todo.id)}>
+        <span
+          className="icon"
+          onClick={(e) => {
+            if (edit && !todo.isDone) {
+              handleEdit(e, todo.id);
+            } else {
+              handleDone(todo.id);
+            }
+          }}
+        >
           <MdDone />
         </span>
       </div>
